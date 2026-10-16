@@ -1,6 +1,6 @@
 ---
 name: socialapis
-description: Get public Facebook and Instagram data (pages, posts, comments, groups, Meta Ads Library, Marketplace listings, Instagram profiles, posts, reels and locations) through the SocialAPIs REST API or its MCP server. Use when the user wants to look up, monitor, compare or analyze public Facebook or Instagram content, competitors' ads, or Marketplace listings, or wants code that does.
+description: Get public Facebook and Instagram data (pages, posts, comments, groups, photo albums, Meta Ads Library, Marketplace listings, Instagram profiles, posts, reels and locations) through the SocialAPIs REST API or its MCP server. Use when the user wants to look up, monitor, compare or analyze public Facebook or Instagram content, competitors' ads, or Marketplace listings, or wants code that does.
 ---
 
 # SocialAPIs: Facebook & Instagram data
@@ -53,17 +53,21 @@ Official SDKs if the user is writing an app: Python `pip install socialapis-sdk`
 | Views, video URLs or audio of a reel/video post | `/facebook/posts/details/extended?link=<post url>` |
 | Comments on a post | `/facebook/posts/comments?link=<post url>` |
 | A public group's info / posts | `/facebook/groups/details` / `/facebook/groups/posts` with `link=<group url>` |
+| A page's or group's photo albums | `/facebook/pages/albums?profile_id=…` (ID from `/facebook/pages/id`) or `/facebook/groups/albums?group_id=…` (ID from `/facebook/groups/id`), then `/facebook/albums/items?album_id=…` for the photos and videos |
 | Ads a brand is running | `/facebook/ads/search?query=<brand or keyword>&country=<ISO code>` |
 | Which advertisers use a keyword | `/facebook/ads/keywords?query=<keyword>` |
 | Marketplace listings near a city | `/facebook/marketplace/city-coordinates?city=<city>`, then `/facebook/marketplace/search` with the latitude/longitude |
 | An Instagram profile | `/instagram/profile/details?username=<username>` |
-| An Instagram profile's posts / reels | `/instagram/profile/posts?username=…` / `/instagram/profile/reels?user_id=…` (get `user_id` from `/instagram/user/id`) |
+| An Instagram profile's posts / reels | `/instagram/profile/posts?username=…` / `/instagram/profile/reels?user_id=…` |
+| An Instagram profile's story highlights | `/instagram/profile/highlights?user_id=<pk>`, then `/instagram/highlight/details?highlight_id=…` |
 | One Instagram post | `/instagram/post/details?shortcode=<code from /p/<code>/>` |
 | Credits left | `/usage` (free) |
 
 Check [references/endpoints.md](references/endpoints.md) for every parameter before calling an endpoint you haven't used.
 
 ## Things that matter
+
+- **Instagram has two IDs per profile.** `/instagram/user/id` returns both: the long `user_id` (e.g. `17841401474538262`) for `/instagram/profile/posts` and `/instagram/profile/reels`, and the short `pk` (e.g. `528817151`) for `/instagram/profile/highlights`, which still takes it in a parameter named `user_id`. Using the wrong one returns nothing.
 
 - **Credits:** most calls cost 1 credit; some cost more (each endpoint says so). Responses include the headers `X-SocialAPIs-Credits-Deducted` and `X-SocialAPIs-Credits-Remaining`, and most bodies have a `meta` block with the same numbers. Before a large batch, check `/usage` and tell the user roughly what it will cost.
 - **Pagination:** list endpoints return a small page plus `end_cursor`. Pass it back as `end_cursor` for the next page. Stop when it's missing or the user has enough.

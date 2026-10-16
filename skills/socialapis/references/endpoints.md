@@ -2,7 +2,7 @@
 
 Base URL: `https://api.socialapis.io` · Auth: header `x-api-token: $SOCIALAPIS_API_KEY` · All endpoints are `GET` with query parameters.
 
-Generated from the live API configuration. Machine-readable version: https://socialapis.io/openapi.json
+Generated from the live API configuration (53 endpoints). Machine-readable version: https://socialapis.io/openapi.json
 
 ## Facebook pages
 
@@ -54,6 +54,16 @@ List videos uploaded to a Facebook page, with video_id, title, duration, view co
 | `link` | yes | Facebook page URL |
 | `end_cursor` | no | Pagination cursor |
 
+### `GET /facebook/pages/albums`
+
+List the photo albums of a Facebook page, with album_id, album_title, url, thumbnail_uri and album_items_count (text, e.g. "400 items"). Needs the numeric page ID (profile_id) from `/facebook/pages/id`. Returns an end_cursor for the next page. To get the photos in an album, pass its album_id to `/facebook/albums/items`. Pricing: 1 credit per call.
+
+| Parameter | Required | Description |
+|---|---|---|
+| `profile_id` | yes | Facebook page ID, from `/facebook/pages/id` |
+| `limit` | no | Maximum number of albums to return. Default: 8. Minimum: 8. Maximum: 16. |
+| `end_cursor` | no | Pagination cursor |
+
 ## Facebook groups
 
 ### `GET /facebook/groups/id`
@@ -94,6 +104,26 @@ List videos posted in a public Facebook group, with video_id, title, duration, v
 | `link` | yes | Facebook group URL |
 | `end_cursor` | no | Pagination cursor |
 
+### `GET /facebook/groups/albums`
+
+List the photo albums of a public Facebook group, with album_id, album_title, url, thumbnail_uri, photos_count and videos_count. Returns an end_cursor for the next page. Needs the numeric group ID (group_id) from `/facebook/groups/id`. To get the photos in an album, pass its album_id to `/facebook/albums/items`. Pricing: 1 credit per call.
+
+| Parameter | Required | Description |
+|---|---|---|
+| `group_id` | yes | Facebook group ID, from `/facebook/groups/id` |
+| `limit` | no | Maximum number of albums to return. Default: 8. Minimum: 8. Maximum: 16. |
+
+## Facebook albums
+
+### `GET /facebook/albums/items`
+
+Get the photos and videos inside a Facebook album (from a page or a group): media_id, media_type, url, thumbnail_uri and timestamp (Unix seconds). Needs an album_id from `/facebook/pages/albums` or `/facebook/groups/albums`. Returns an end_cursor for the next page. Pricing: 1 credit per call.
+
+| Parameter | Required | Description |
+|---|---|---|
+| `album_id` | yes | Album ID, from `/facebook/pages/albums` or `/facebook/groups/albums` |
+| `end_cursor` | no | Pagination cursor |
+
 ## Facebook posts, videos and comments
 
 ### `GET /facebook/posts/id`
@@ -126,7 +156,7 @@ List every media attachment (images and videos, with URLs and dimensions) on a F
 
 | Parameter | Required | Description |
 |---|---|---|
-| `post_id` | yes | Numeric Facebook post ID, from facebook_get_post_id |
+| `post_id` | yes | Numeric Facebook post ID, from `/facebook/posts/id` |
 
 ### `GET /facebook/posts/video`
 
@@ -239,7 +269,7 @@ Get an advertiser's Ads Library profile: page name, verification status, categor
 
 | Parameter | Required | Description |
 |---|---|---|
-| `page_id` | yes | Advertiser page ID: ad_page_id from facebook_get_page_details, or page_id from facebook_ads_keywords |
+| `page_id` | yes | Advertiser page ID: ad_page_id from `/facebook/pages/details`, or page_id from `/facebook/ads/keywords` |
 
 ### `GET /facebook/ads/archive-details`
 
@@ -247,7 +277,7 @@ Get one Ad Library ad in full: creative, body text, CTA, platforms, countries, d
 
 | Parameter | Required | Description |
 |---|---|---|
-| `ad_archive_id` | yes | Ad Library archive ID of the ad (ad_archive_id from a facebook_ads_search result) |
+| `ad_archive_id` | yes | Ad Library archive ID of the ad (ad_archive_id from a `/facebook/ads/search` result) |
 | `page_id` | no | Facebook Page ID |
 | `country` | no | ISO country code or "ALL" |
 | `is_ad_non_political` | no | Filter non-political ads |
@@ -275,8 +305,8 @@ Search general Facebook Marketplace listings (items for sale) by keyword or cate
 | `proxy_country` | no | Optional premium proxy country |
 | `commerce_search_sort_by` | no | Sort: BEST_MATCH, CREATION_TIME_DESCEND, PRICE_ASCEND, etc. |
 | `commerce_search_and_rp_condition` | no | Condition: new, used_like_new, used_good, used_fair |
-| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from facebook_marketplace_city_coordinates) |
-| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from facebook_marketplace_city_coordinates) |
+| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from `/facebook/marketplace/city-coordinates`) |
+| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from `/facebook/marketplace/city-coordinates`) |
 | `filter_price_lower_bound` | no | Minimum price in the local currency, whole number, e.g. 100 |
 | `filter_price_upper_bound` | no | Maximum price in the local currency, whole number, e.g. 2000 |
 | `filter_radius_km` | no | Search radius around the center in kilometres, e.g. 40 |
@@ -299,7 +329,7 @@ Get a Marketplace seller's profile: name, join date, rating, review count and ba
 
 | Parameter | Required | Description |
 |---|---|---|
-| `seller_id` | yes | Seller ID, from the seller field of facebook_marketplace_listing |
+| `seller_id` | yes | Seller ID, from the seller field of `/facebook/marketplace/listing` |
 
 ### `GET /facebook/marketplace/categories`
 
@@ -324,8 +354,8 @@ Search Facebook Marketplace vehicle listings (cars, trucks, motorcycles) near a 
 | Parameter | Required | Description |
 |---|---|---|
 | `sort_by` | no | Sort: CREATION_TIME_DESCEND, PRICE_ASCEND, VEHICLE_MILEAGE_ASCEND, etc. |
-| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from facebook_marketplace_city_coordinates) |
-| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from facebook_marketplace_city_coordinates) |
+| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from `/facebook/marketplace/city-coordinates`) |
+| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from `/facebook/marketplace/city-coordinates`) |
 | `filter_price_lower_bound` | no | Minimum price in the local currency, whole number, e.g. 100 |
 | `filter_price_upper_bound` | no | Maximum price in the local currency, whole number, e.g. 2000 |
 | `filter_radius_km` | no | Search radius around the center in kilometres, e.g. 40 |
@@ -340,8 +370,8 @@ Search Facebook Marketplace rental listings (apartments, houses, rooms) near a l
 | Parameter | Required | Description |
 |---|---|---|
 | `sort_by` | no | Sort: CREATION_TIME_DESCEND, PRICE_ASCEND, BEST_MATCH |
-| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from facebook_marketplace_city_coordinates) |
-| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from facebook_marketplace_city_coordinates) |
+| `filter_location_latitude` | no | Latitude of the search center, e.g. 30.2672 (from `/facebook/marketplace/city-coordinates`) |
+| `filter_location_longitude` | no | Longitude of the search center, e.g. -97.7431 (from `/facebook/marketplace/city-coordinates`) |
 | `filter_price_lower_bound` | no | Minimum price in the local currency, whole number, e.g. 100 |
 | `filter_price_upper_bound` | no | Maximum price in the local currency, whole number, e.g. 2000 |
 | `filter_radius_km` | no | Search radius around the center in kilometres, e.g. 40 |
@@ -366,7 +396,7 @@ Resolve a Facebook media URL (image, video or audio, e.g. from a post or reel) t
 
 ### `GET /instagram/user/id`
 
-Resolve an Instagram username or profile URL to its numeric user ID. Needed by `/instagram/profile/reels` and `/instagram/profile/highlights`. Pricing: 1 credit per call.
+Resolve an Instagram username or profile URL to its two IDs: user_id (long, e.g. 17841401474538262), used by `/instagram/profile/posts` and `/instagram/profile/reels`, and pk (short, e.g. 528817151), used by `/instagram/profile/highlights`. Pricing: 1 credit per call.
 
 | Parameter | Required | Description |
 |---|---|---|
@@ -384,30 +414,30 @@ Get an Instagram profile by username: bio, follower and post counts, verificatio
 
 ### `GET /instagram/profile/posts`
 
-List an Instagram profile's posts (photos, videos, carousels) with captions, like and comment counts and media URLs. Pass username (returns more results) or user_id. Returns an end_cursor for the next page. For reels only, use `/instagram/profile/reels`. Pricing: 1 credit per call.
+List an Instagram profile's posts (photos, videos, carousels) with captions, like and comment counts and media URLs. Pass username (returns more results) or user_id (the long user_id from `/instagram/user/id`, not the pk). Returns an end_cursor for the next page. For reels only, use `/instagram/profile/reels`. Pricing: 1 credit per call.
 
 | Parameter | Required | Description |
 |---|---|---|
 | `username` | no | Instagram username (recommended — returns more results) |
-| `user_id` | no | Instagram user ID (alternative) |
+| `user_id` | no | Long Instagram user ID: user_id from `/instagram/user/id` (e.g. 17841401474538262), not the pk. Alternative to username. |
 | `end_cursor` | no | Pagination cursor for next page |
 
 ### `GET /instagram/profile/reels`
 
-List an Instagram profile's reels with play counts, captions, video URLs and audio metadata. Needs the numeric user_id from `/instagram/user/id`. Returns an end_cursor for the next page. Pricing: 1 credit per call.
+List an Instagram profile's reels with play counts, captions, video URLs and audio metadata. Needs the long user_id from `/instagram/user/id` (not the pk). Returns an end_cursor for the next page. Pricing: 1 credit per call.
 
 | Parameter | Required | Description |
 |---|---|---|
-| `user_id` | yes | Instagram user ID |
+| `user_id` | yes | Long Instagram user ID: user_id from `/instagram/user/id` (e.g. 17841401474538262), not the pk. |
 | `end_cursor` | no | Pagination cursor for next page |
 
 ### `GET /instagram/profile/highlights`
 
-List an Instagram profile's story highlights with titles, cover images and highlight IDs. Needs the numeric user_id from `/instagram/user/id`. Use `/instagram/highlight/details` to get the stories in one highlight. Pricing: 1 credit per call.
+List an Instagram profile's story highlights with titles, cover images and highlight IDs. Needs the profile's pk from `/instagram/user/id`, passed as user_id (not the long user_id). Use `/instagram/highlight/details` to get the stories in one highlight. Pricing: 1 credit per call.
 
 | Parameter | Required | Description |
 |---|---|---|
-| `user_id` | yes | Instagram user ID |
+| `user_id` | yes | The profile's pk from `/instagram/user/id` (e.g. 528817151), not the long user_id. |
 
 ### `GET /instagram/highlight/details`
 
