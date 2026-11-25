@@ -7,7 +7,7 @@ description: Map who advertises on Facebook and Instagram for a keyword or niche
 
 One brand's ads tell you about that brand. A keyword's ads tell you about the market: who is spending, how crowded it is, and which promise everyone makes (so you can make a different one).
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_ads`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_ads`.
 
 ## Ask first (only what's missing)
 

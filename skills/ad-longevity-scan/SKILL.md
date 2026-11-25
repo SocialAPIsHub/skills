@@ -7,7 +7,7 @@ description: Find which of a brand's Facebook and Instagram ads are working by h
 
 Advertisers switch off ads that lose money. An ad that has been live for months is one the brand keeps paying for, which is the best public signal of a winner the Ad Library gives you. This skill ranks a brand's ads by that signal and reads what the long runners have in common.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_ads`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_ads`.
 
 ## Ask first (only what's missing)
 

@@ -7,7 +7,7 @@ description: Build a snapshot of a local rental market from Facebook Marketplace
 
 What does a 2-bedroom cost in this city right now, and which listings are worth a call?
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_marketplace` (rentals action).
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_marketplace` (rentals action).
 
 ## Ask first (only what's missing)
 

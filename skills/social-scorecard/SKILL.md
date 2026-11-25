@@ -7,7 +7,7 @@ description: Score and compare 2 to 6 Facebook pages and Instagram accounts side
 
 A fair, numbers-first comparison of social accounts: same time window, same metrics, normalized for audience size so a 5k-follower shop can be compared with a 2M-follower brand.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_page` and `instagram_profile`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_page` and `instagram_profile`.
 
 ## Ask first (only what's missing)
 
