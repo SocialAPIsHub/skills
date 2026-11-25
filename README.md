@@ -52,6 +52,20 @@ If the [SocialAPIs MCP server](https://github.com/SocialAPIsHub/mcp-server) is c
 |---|---|
 | [`socialapis`](skills/socialapis/SKILL.md) | How to call the SocialAPIs REST API or MCP server: auth, choosing the endpoint, pagination, credits and errors. Full [endpoint reference](skills/socialapis/references/endpoints.md) (53 endpoints). |
 
+### One platform at a time
+
+Smaller skills for an agent that only needs one data source. Each has its own endpoint reference, so it works installed alone.
+
+| Skill | Data | Endpoints |
+|---|---|---|
+| [`facebook-pages-api`](skills/facebook-pages-api/SKILL.md) | Facebook pages, posts, reels, videos, albums, comments, search ([docs](https://socialapis.io/api-sources/facebook-page-details)) | 20 |
+| [`facebook-ads-library-api`](skills/facebook-ads-library-api/SKILL.md) | Meta Ad Library: ads, advertisers, keywords ([docs](https://socialapis.io/api-sources/meta-ads-search)) | 5 |
+| [`facebook-marketplace-api`](skills/facebook-marketplace-api/SKILL.md) | Marketplace listings, sellers, vehicles, rentals ([docs](https://socialapis.io/api-sources/marketplace-search)) | 7 |
+| [`facebook-groups-api`](skills/facebook-groups-api/SKILL.md) | Public groups: details, posts, videos, albums ([docs](https://socialapis.io/api-sources/facebook-group-posts)) | 6 |
+| [`instagram-api`](skills/instagram-api/SKILL.md) | Instagram profiles, posts, reels, highlights, places, search ([docs](https://socialapis.io/api-sources/instagram-profile-details)) | 13 |
+
+They're generated from the full reference: `node scripts/build-platform-skills.mjs` after `skills/socialapis/references/endpoints.md` changes.
+
 ## How they're built
 
 - **They plan the spend.** Each skill states its typical credit cost and asks before a large run. `/usage` (free) shows the balance.

@@ -7,7 +7,7 @@ description: Report what's happening at and around a place on Instagram and Face
 
 Pick a place (a venue, a street, a park, a mall) and see how people post about it and what's popular nearby, from Instagram location tags and Facebook pages.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `instagram_location`, `instagram_search` and `facebook_search`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `instagram_location`, `instagram_search` and `facebook_search`.
 
 ## Ask first (only what's missing)
 

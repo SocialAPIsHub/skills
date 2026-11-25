@@ -7,7 +7,7 @@ description: Vet an Instagram creator before paying them for a collaboration - r
 
 Before a brand pays a creator, check the public numbers behind the media kit. This skill produces a verdict with the evidence, not a vanity summary.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `instagram_profile`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `instagram_profile`.
 
 ## Ask first (only what's missing)
 

@@ -7,7 +7,7 @@ description: Turn the posts in public Facebook groups into a ranked bank of the 
 
 Public Facebook groups are where people ask each other for help in plain words: "has anyone tried…", "what do you use for…", "I'm stuck with…". This skill collects those posts from one or more groups and ranks the questions by how often and how loudly they come up.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_group` and `facebook_post`.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_group` and `facebook_post`.
 
 ## Ask first (only what's missing)
 

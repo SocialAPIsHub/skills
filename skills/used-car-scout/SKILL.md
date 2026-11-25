@@ -7,7 +7,7 @@ description: Scout used cars, trucks and motorcycles on Facebook Marketplace nea
 
 Turn "I want a 2018+ Corolla under $14k near Austin" into a ranked shortlist with a fair-price check on every car.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_marketplace` (vehicles action).
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); with the MCP server connected, use `facebook_marketplace` (vehicles action).
 
 ## Ask first (only what's missing)
 

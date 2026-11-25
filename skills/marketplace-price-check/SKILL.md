@@ -7,7 +7,7 @@ description: Work out what an item really sells for on Facebook Marketplace in a
 
 Answer "what does this go for around here?" with numbers from current Facebook Marketplace listings, not guesses.
 
-Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](../socialapis/references/endpoints.md)); if the SocialAPIs MCP tools are connected, use `facebook_marketplace` instead of raw HTTP.
+Needs `SOCIALAPIS_API_KEY`. Auth, parameters and errors are in the `socialapis` skill ([endpoint reference](https://github.com/SocialAPIsHub/skills/blob/main/skills/socialapis/references/endpoints.md)); if the SocialAPIs MCP tools are connected, use `facebook_marketplace` instead of raw HTTP.
 
 ## Ask first (only what's missing)
 
